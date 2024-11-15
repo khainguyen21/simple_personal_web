@@ -42,7 +42,6 @@ $(document).ready(function(){
     });
     
 });
-console.log("I dont think so ");
 
 
 
