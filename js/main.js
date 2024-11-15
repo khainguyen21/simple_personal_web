@@ -42,10 +42,3 @@ $(document).ready(function(){
     });
     
 });
-
-
-
-
-
-
-
