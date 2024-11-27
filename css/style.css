@@ -26,8 +26,6 @@ body
 {
     font-family: "Roboto", sans-serif;
     
-
-
 }
 
 img
@@ -76,7 +74,7 @@ button:hover{
     height: 100vh;
     background-color: rgba(113, 113, 113, 0.7);
     display: none;
-    z-index: 4;
+    /*z-index: 4;*/
 }
 
 #overlay.show
@@ -117,7 +115,7 @@ header{
     width: 70%;
     height: 100%;
     background-color: rgb(30, 29, 29);
-    z-index: 5; 
+    /*z-index: 5;*/ 
     transition: var(--smooth); 
     
     
@@ -172,7 +170,7 @@ header{
     height: 60px; 
     cursor: pointer;
     transition: var(--smooth);
-    z-index: 6;
+    /*z-index: 6;*/
 }
 
 .navbar__icon
@@ -265,7 +263,7 @@ header{
     position: absolute;
     top: 1; 
     right: 13rem; 
-    z-index: -1;
+    /*z-index: -1;*/
     
 }
 
@@ -371,10 +369,6 @@ header{
         0 0 50px rgba(0, 0, 0, 0.3),
         0 0 80px rgba(0, 0, 0, 0.2),
         0 0 100px rgba(0, 0, 0, 0.1); /* Adjust shadow properties as needed */
-
-
-        
-
 }
 
 #things h2 {
