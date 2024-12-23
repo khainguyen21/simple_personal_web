@@ -8,7 +8,6 @@
     box-sizing: border-box;
 }
 
-
 html
 {
     /* background-color: #fefefe; */
@@ -17,15 +16,11 @@ html
     background-position: center;
     background-size: cover;
     background-attachment: fixed;
-    
-
-
 }
 
 body
 {
     font-family: "Roboto", sans-serif;
-    
 }
 
 img
@@ -64,25 +59,6 @@ button:hover{
     --smooth: all 0.7s ease-in; 
 }
 
-/* overlay */
-#overlay
-{
-    position:fixed; 
-    top: 0; 
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(113, 113, 113, 0.7);
-    display: none;
-    /*z-index: 4;*/
-}
-
-#overlay.show
-{
-    display: initial;
-}
-
-
 /* header */
 header{
     position: absolute;
@@ -115,10 +91,8 @@ header{
     width: 70%;
     height: 100%;
     background-color: rgb(30, 29, 29);
-    /*z-index: 5;*/ 
+    z-index: 5; 
     transition: var(--smooth); 
-    
-    
     transform: translateX(-100%);
     opacity: 0;
 }
@@ -170,7 +144,7 @@ header{
     height: 60px; 
     cursor: pointer;
     transition: var(--smooth);
-    /*z-index: 6;*/
+    z-index: 6;
 }
 
 .navbar__icon
@@ -231,8 +205,6 @@ header{
         display: flex;
         justify-content: flex-end;
         align-items: center;
-    
-        
     }
 
     .navbar__links a {
@@ -263,15 +235,20 @@ header{
     position: absolute;
     top: 1; 
     right: 13rem; 
-    /*z-index: -1;*/
+    z-index: -1;
     
 }
 
 .banner__heading {
-    max-width: 300px;
-    margin: 0 auto; 
-    text-align: center;
+    width: 500px;
+    padding: 50px;
     color: gray;
+    border-radius: 10px; /* Adjust border radius for rounded corners */
+    box-shadow: 
+        0 80px 30px rgba(0, 0, 0, 0.4),
+        0 0 50px rgba(0, 0, 0, 0.3),
+        0 0 80px rgba(0, 0, 0, 0.2),
+        0 0 100px rgba(0, 0, 0, 0.1); /* Adjust shadow properties as needed */
 }
 
 .banner__heading h1{
@@ -309,10 +286,9 @@ header{
 }
 
 .banner__socials a{
-    
     transition: var(--smooth);
-
     margin-left: 20px; 
+    z-index: 10;
       
 }
 
@@ -451,7 +427,6 @@ header{
 .education__items{
     display: flex;
     align-items: center;
-    flex-direction: column;
     gap: 120px;
 }
 
@@ -459,25 +434,21 @@ header{
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-bottom: 20px;
     border: 2px solid black;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4),
         0 0 50px rgba(0, 0, 0, 0.3),
         0 0 80px rgba(0, 0, 0, 0.2),
         0 0 100px rgba(0, 0, 0, 0.1);
     width: 400px;
-    
-    
+    height: 800px;
+    color: rgb(143, 143, 143)    
 }
 
 .education__item:hover{
-    transform: scale(1.1);
+    transform: scale(1.000001);
     transition: var(--smooth);
-    
+    color: black;
 }
-
-
-
 
 .container > .education__items img{
 
@@ -485,53 +456,21 @@ header{
     
 }
 
-@media(min-width:62em)
-{
-    .education__items{
-        display: flex;
-        justify-content: space-evenly;
-        gap: 20px;
-        flex-direction: row;
-
-    }
-
-    .education__item{
-        width: 500px;
-    }
-
-
-
-}
-
 .card {
-    width: 300px;
+    width: 350px;
     height: 300px;
-    position: relative;
     transform-style: preserve-3d;
     transition: transform 1s;
 }
 
-.card__front, .card__back
+.card > img
 {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    backface-visibility: hidden;
-}
-.card__front{
-    padding-left: 20px;
-    width: 100%;
-    text-align: center;
-}
-.card__back{
-    transform: rotateY(180deg);
-    padding-top: 20px;
-    font-size: 13px;
+    margin-left: 55px;
 }
 
-.card__flip
+.card > h3
 {
-    transform: rotateY(180deg);
+    text-align: center;
 }
 
 
@@ -563,8 +502,6 @@ header{
     font-size: 24px;
     color: rgb(223, 217, 217);
     text-decoration: none;
-
-    
   }
   
   .links {
@@ -607,9 +544,21 @@ header{
     padding-left: 50px;
     width: 100%;
   }
-
-
   
+@media(min-width:62em)
+{
+    .education__items{
+        display: flex;
+        justify-content: space-evenly;
+        gap: 20px;
+        flex-direction: row;
+
+    }
+
+    .education__item{
+        width: 500px;
+    }
+}
   @media (width > 420px) {
     #footer__links {
         align-items: center;
@@ -622,9 +571,3 @@ header{
       gap: 20px;
     }
   } 
-
-
-
-
-
- 
