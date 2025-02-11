@@ -241,7 +241,7 @@ header{
 
 .banner__heading {
     width: 500px;
-    padding: 50px;
+    padding: 30px;
     color: gray;
     border-radius: 10px; /* Adjust border radius for rounded corners */
     box-shadow: 
@@ -278,9 +278,8 @@ header{
 .banner__socials
 {
     margin-top: 3em;
-    display: flex;
-    justify-content: space-evenly;
     font-size: 2rem;
+    margin-right:1em ;
     
     
 }
