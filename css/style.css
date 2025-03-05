@@ -20,7 +20,7 @@ html
 
 body
 {
-    font-family: "Roboto", sans-serif;
+    font-family: "Open Sans", sans-serif;
 }
 
 img
@@ -193,34 +193,6 @@ header{
     transform: rotate(-45deg) translateX(35px) translateY(35px) ; /*rotate -45 degree, move right 35px, move down 35px*/
 }
 
-
-@media(min-width: 40em)
-{
-    .navbar__links
-    {
-        position: initial;
-        transform: translateX(0);
-        opacity: 1;
-        background-color: transparent;
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-    }
-
-    .navbar__links a {
-        color: black;
-    }
-
-    .navbar__icons{
-        display: none;
-    }
-
-    .navbar__btn{
-        background-color: black;
-    }
-
-}
-
 /* Banner */
 #banner
 {
@@ -256,6 +228,7 @@ header{
     font-size: 2.25rem;
     padding-top: 4em;
     margin-bottom: .8em;
+    text-align: center;
 }
 
 .banner__img img
@@ -278,9 +251,9 @@ header{
 
 .banner__socials
 {
-    margin-top: 3em;
-    font-size: 2rem;
-    margin-right:1em;
+    display: flex;
+    font-size: 35px;
+    justify-content: space-evenly;
 }
 
 .banner__socials a{
@@ -295,36 +268,6 @@ header{
     transition: var(--smooth);
 }
 
-
-@media(min-width:62em)
-{
-    .banner__heading{
-        text-align: initial;
-        margin: 0;
-        padding-top: 0;
-    }
-
-    .banner__socials{
-        display: flex;
-        justify-content: flex-end;
-    }
-
-    .banner__socials a{
-        margin-right: 57px;
-    }
-    
-    .banner__img{
-        width: 50em;
-        height: 30em;
-    }
-
-    .banner__img img
-    {
-        width: 20em;
-        margin-top: 50px;
-        margin-left: 20em;
-    }
-}
 
 /* languages and  skills*/
 #things{
@@ -423,12 +366,11 @@ header{
 }
 
 .education__items{
-    display: flex;
-    align-items: center;
-    gap: 120px;
+    position: relative;
+
 }
 
-.education__item{
+.education__item1{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -442,7 +384,27 @@ header{
     color: rgb(143, 143, 143)    
 }
 
-.education__item:hover{
+.education__item2{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid black;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4),
+        0 0 50px rgba(0, 0, 0, 0.3),
+        0 0 80px rgba(0, 0, 0, 0.2),
+        0 0 100px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    height: 1000px;
+    color: rgb(143, 143, 143)    
+}
+
+.education__item1:hover{
+    transform: scale(1.000001);
+    transition: var(--smooth);
+    color: black;
+}
+.education__item2:hover{
     transform: scale(1.000001);
     transition: var(--smooth);
     color: black;
@@ -542,8 +504,9 @@ header{
     padding-left: 50px;
     width: 100%;
   }
-  
-@media(min-width:62em)
+
+
+  @media(min-width:62em)
 {
     .education__items{
         display: flex;
@@ -553,12 +516,39 @@ header{
 
     }
 
-    .education__item{
+    .education__item1{
+        width: 500px;
+        margin-top: 50px;
+    }
+    .education__item2{
         width: 500px;
     }
-}
-  @media (width > 420px) {
-    #footer__links {
+    .banner__heading{
+        text-align: initial;
+        margin: 0;
+        padding-top: 0;
+    }
+
+    .banner__socials{
+        margin-left: 80px;
+    }
+
+    .banner__socials a{
+        margin-right: 57px;
+    }
+    
+    .banner__img{
+        width: 50em;
+        height: 30em;
+    }
+
+    .banner__img img
+    {
+        width: 20em;
+        margin-top: 50px;
+        margin-left: 20em;
+    }
+        #footer__links {
         align-items: center;
 
         gap: 20px;
@@ -568,4 +558,27 @@ header{
     .links {
       gap: 20px;
     }
-  } 
+
+    .navbar__links
+    {
+        position: initial;
+        transform: translateX(0);
+        opacity: 1;
+        background-color: transparent;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    .navbar__links a {
+        color: black;
+    }
+
+    .navbar__icons{
+        display: none;
+    }
+
+    .navbar__btn{
+        background-color: black;
+    }
+}
