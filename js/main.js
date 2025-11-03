@@ -1,22 +1,31 @@
-// //Menu
-// const menu = document.querySelector(".navbar__links");
-// const menuButton = document.querySelector(".navbar__icons");
-// const overlay = document.querySelector("#overlay");
+// Mobile Menu
+const menu = document.querySelector(".navbar__links");
+const menuButton = document.querySelector(".navbar__icons");
+const overlay = document.querySelector("#overlay");
 
-// menuButton.addEventListener('click', ()=>{
-//     menu.classList.toggle("navbar__open"); 
-//     menuButton.classList.toggle("open"); 
-//     overlay.classList.toggle("show");
+// Toggle menu when hamburger is clicked
+menuButton.addEventListener('click', ()=>{
+    menu.classList.toggle("navbar__open"); 
+    menuButton.classList.toggle("open"); 
+    overlay.classList.toggle("show");
+}); 
 
-// }); 
+// Close menu when overlay is clicked
+overlay.addEventListener('click', ()=>{
+    menu.classList.remove("navbar__open"); 
+    menuButton.classList.remove("open"); 
+    overlay.classList.remove("show");
+});
 
-
-// overlay.addEventListener('click', ()=>{
-//     menu.classList.remove("navbar__open"); 
-//     menuButton.classList.remove("open"); 
-//     overlay.classList.toggle("show");
-
-// });
+// Close menu when a link is clicked
+const navLinks = document.querySelectorAll(".navbar__link a");
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        menu.classList.remove("navbar__open");
+        menuButton.classList.remove("open");
+        overlay.classList.remove("show");
+    });
+});
 
 // gsap.from('header', {duration: 1 , opacity: 0, delay: 2, stagger: .5})
 // gsap.from('section', {duration: 1 , opacity: 0, x: '-100%', delay: 3, stagger: .5}); 

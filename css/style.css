@@ -268,8 +268,11 @@ header {
 
 .navbar__btn {
     font-size: 14px;
-    margin-left: 32px;
+    margin-left: 0;
+    margin-top: 16px;
     padding: 10px 24px;
+    display: block;
+    width: fit-content;
 }
 
 .navbar__icons {
@@ -328,6 +331,27 @@ header {
 
 .open .navbar__icon::after {
     transform: rotate(-45deg) translateY(0);
+}
+
+/* Overlay for mobile menu */
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 998;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--smooth);
+}
+
+#overlay.show {
+    opacity: 1;
+    visibility: visible;
 }
 
 /* ========================================
@@ -524,6 +548,60 @@ header {
 .things__item img:hover {
     transform: translateY(-8px) scale(1.05);
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+}
+
+.skills__category {
+    margin-bottom: 48px;
+}
+
+.skills__category:last-child {
+    margin-bottom: 0;
+}
+
+.skills__category h3 {
+    text-align: center;
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin-bottom: 24px;
+    color: white;
+    letter-spacing: -0.01em;
+}
+
+.skills__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+}
+
+.skill__item {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 24px;
+    background: white;
+    color: var(--text-on-white);
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: var(--smooth);
+    cursor: default;
+}
+
+.skill__item i {
+    font-size: 1.15rem;
+    color: var(--primary-blue);
+}
+
+.skill__item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.skill__item:hover i {
+    color: var(--blue-dark);
 }
 
 /* ========================================
@@ -817,8 +895,9 @@ svg {
     
     .navbar__link {
         margin-bottom: 0;
-        margin-left: 32px;
         animation: none;
+        margin-left: 10px;
+        margin-right: 10px;
     }
 
     .navbar__link a {
@@ -837,6 +916,13 @@ svg {
 
     .navbar__btn {
         margin-left: 32px;
+        margin-top: 0;
+        display: inline-block;
+    }
+
+    /* Hide overlay on desktop */
+    #overlay {
+        display: none;
     }
 
     /* Hero Section */
