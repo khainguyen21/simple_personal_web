@@ -1,307 +1,396 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#6B9FEE" />
     <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
     <!-- Font Awesome -->
     <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
     />
-    
+
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css" />
     <title>Khai Nguyen</title>
-</head>
-<body>
+  </head>
+  <body>
     <!-- header -->
     <header>
-        <div class="container">
-            <nav class="navbar">
-                <!-- logo -->
-                <div class="navbar__logo">
-                    <img src="image/klogo.png" alt="wesite logo">
-                </div>
-                <!-- link -->
-                <ul class="navbar__links">
-                    <li class="navbar__link"><a href="#banner">About</a></li>
-                    <li class="navbar__link"><a href="#things">Tech Stack</a></li>
-                    <li class="navbar__link"><a href="#education">Education</a></li>
-                    <a href="mailto:khainguyen2004@gmail.com"><button class="navbar__btn">Contact</button></a>
-                </ul>
-                <!-- menu button -->
-                <div class="navbar__icons">
-                    <div class="navbar__icon">
-
-                    </div>
-                </div>
-            </nav>
-        </div>
+      <div class="container">
+        <nav class="navbar">
+          <!-- logo -->
+          <div class="navbar__logo">
+            <img src="image/klogo.png" alt="wesite logo" />
+          </div>
+          <!-- link -->
+          <ul class="navbar__links">
+            <li class="navbar__link"><a href="#banner">About</a></li>
+            <li class="navbar__link"><a href="#things">Tech Stack</a></li>
+            <li class="navbar__link"><a href="#education">Education</a></li>
+            <a href="mailto:khainguyen2004@gmail.com"
+              ><button class="navbar__btn">Contact</button></a
+            >
+          </ul>
+          <!-- menu button -->
+          <div class="navbar__icons">
+            <div class="navbar__icon"></div>
+          </div>
+          <div class="theme-toggle" role="button" aria-label="Toggle theme">
+            <i class="fas fa-moon"></i>
+          </div>
+        </nav>
+      </div>
     </header>
-    
+
     <!-- overlay for mobile menu -->
     <div id="overlay"></div>
-    
+
     <!-- banner -->
     <section id="banner">
-        <div class="container">
-            <!-- img -->
-            <!-- <div class="banner__img">
+      <div class="container">
+        <!-- img -->
+        <!-- <div class="banner__img">
                 <img src="image/avatarblackbg.png" alt="My Face">
             </div> -->
-            <!-- heading -->
-            <div class="banner__heading">
-                <h1>Hello, I'm Khai Nguyen</h1>
-                <p>I’m a sophomore majoring in Computer Science at Evergreen Valley College with a strong interest in backend software engineering.</p>
-                <p>I’m currently developing my skills in Java, Spring Boot, and PostgreSQL while building projects that strengthen my understanding of scalable backend systems. 
-                    Right now, I’m working on an MVP — a full-stack web application that allows students to book tutoring appointments by subject and tutor, built using Java, 
-                    Spring Boot, and SQL.</p>
-                <p>After completing my community college requirements, I will transfer to a University of California campus to pursue a Bachelor’s degree in Computer Science. 
-                    My current goal is to secure my first software engineering internship, where I can apply my technical skills, learn from real-world development teams, and 
-                    contribute to impactful projects that solve meaningful problems.</p>
+        <!-- heading -->
+        <div class="banner__heading">
+          <h1>Hello, I'm Hong Khai Nguyen</h1>
+          <p>
+            I’m a sophomore majoring in Computer Science at Evergreen Valley
+            College with a strong interest in backend software engineering.
+          </p>
+          <p>
+            After completing my community college requirements in May 2027, I
+            will continue to transfer to a University of California campus to pursue a
+            Bachelor’s degree in Computer Science starting in Fall 2027.
+          </p>
+          <p>
+            My current goal is to secure my first software engineering
+            internship, where I can apply my technical skills, learn from
+            real-world development teams, and contribute to impactful projects
+            that solve meaningful problems. 
+          </p>
+          <p>
+            I’m currently developing my skills in Java, Spring Boot, and PostgreSQL while building projects that
+            strengthen my understanding of scalable backend systems. Right now,
+            I’m working on an MVP — a full-stack web application that allows
+            students to book tutoring appointments by subject and tutor, built
+            using Java, Spring Boot, and SQL.
+          </p>
 
-                <div class="banner__socials">
-                    <a href="https://www.linkedin.com/in/khainguyen21/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://github.com/khainguyen21" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                    <a href="https://open.spotify.com/user/31adzxz75ad6xq6e4fzmq6shltjy" target="_blank" aria-label="Spotify"><i class="fab fa-spotify"></i></a>
-                </div>
-            </div>
+          <div class="banner__socials">
+            <a
+              href="https://www.linkedin.com/in/khainguyen21/"
+              target="_blank"
+              aria-label="LinkedIn"
+              ><i class="fab fa-linkedin"></i
+            ></a>
+            <a
+              href="https://github.com/khainguyen21"
+              target="_blank"
+              aria-label="GitHub"
+              ><i class="fab fa-github"></i
+            ></a>
+            <a
+              href="https://open.spotify.com/user/31adzxz75ad6xq6e4fzmq6shltjy"
+              target="_blank"
+              aria-label="Spotify"
+              ><i class="fab fa-spotify"></i
+            ></a>
+          </div>
         </div>
+      </div>
     </section>
     <!-- things -->
     <section id="things">
-        <div class="container">
-            <!-- heading -->
-            <h2>Tech Stack</h2>
-            
-            <!-- Languages -->
-            <div class="skills__category">
-                <h3>Languages</h3>
-                <div class="skills__list">
-                    <span class="skill__item">
-                        <i class="fab fa-java"></i>
-                        <span>Java</span>
-                    </span>
-                    <span class="skill__item">
-                        <i class="fas fa-database"></i>
-                        <span>SQL</span>
-                    </span>
-                    <span class="skill__item">
-                        <i class="fab fa-python"></i>
-                        <span>Python (Data Analysis)</span>
-                    </span>
-                    <span class="skill__item">
-                        <i class="fab fa-js"></i>
-                        <span>Javascript</span>
-                    </span>
-                    <span class="skill__item">
-                        <i class="fab fa-js"></i>
-                        <span>Typescript</span>
-                    </span>
-                </div>
-            </div>
+      <div class="container">
+        <!-- heading -->
+        <h2>Tech Stack</h2>
 
-            <!-- Frameworks -->
-            <div class="skills__category">
-                <h3>Frameworks</h3>
-                <div class="skills__list">
-                    <span class="skill__item">
-                        <i class="fas fa-leaf"></i>
-                        <span>Spring Boot</span>
-                    </span>
-                    <span class="skill__item">
-                        <i class="fas fa-vial"></i>
-                        <span>JUnit</span>
-                    </span>
-                    <span class="skill__item">
-                        <i class="fab fa-react"></i>
-                        <span>React</span>
-                    </span>
-                    <span class="skill__item">
-                        <i class="fas fa-chart-line"></i>
-                        <span>Numpy</span>
-                    </span>
-                    <span class="skill__item">
-                        <i class="fas fa-brain"></i>
-                        <span>Scikit-learn</span>
-                    </span>
-                </div>
-            </div>
-
-            <!-- Developer Tools -->
-            <div class="skills__category">
-                <h3>Developer Tools</h3>
-                <div class="skills__list">
-                    <span class="skill__item">
-                        <i class="fas fa-code"></i>
-                        <span>IntelliJ IDEA</span>
-                    </span>
-                    <span class="skill__item">
-                        <i class="fab fa-git-alt"></i>
-                        <span>Git</span>
-                    </span>
-                    <span class="skill__item">
-                        <i class="fab fa-github"></i>
-                        <span>Github</span>
-                    </span>
-                    <span class="skill__item">
-                        <i class="fab fa-docker"></i>
-                        <span>Docker</span>
-                    </span>
-                    <span class="skill__item">
-                        <i class="fas fa-cubes"></i>
-                        <span>Maven</span>
-                    </span>
-                    <span class="skill__item">
-                        <i class="fab fa-linux"></i>
-                        <span>Linux</span>
-                    </span>
-                    <span class="skill__item">
-                        <i class="fas fa-terminal"></i>
-                        <span>Vim</span>
-                    </span>
-                    <span class="skill__item">
-                        <i class="fas fa-database"></i>
-                        <span>PostgreSQL</span>
-                    </span>
-                </div>
-            </div>
+        <!-- Languages -->
+        <div class="skills__category">
+          <h3>Languages</h3>
+          <div class="skills__list">
+            <span class="skill__item">
+              <i class="fab fa-java"></i>
+              <span>Java</span>
+            </span>
+            <span class="skill__item">
+              <i class="fas fa-database"></i>
+              <span>SQL</span>
+            </span>
+            <span class="skill__item">
+              <i class="fab fa-python"></i>
+              <span>Python (Data Analysis)</span>
+            </span>
+            <span class="skill__item">
+              <i class="fab fa-js"></i>
+              <span>Javascript</span>
+            </span>
+            <span class="skill__item">
+              <i class="fab fa-js"></i>
+              <span>Typescript</span>
+            </span>
+          </div>
         </div>
+
+        <!-- Frameworks -->
+        <div class="skills__category">
+          <h3>Frameworks</h3>
+          <div class="skills__list">
+            <span class="skill__item">
+              <i class="fas fa-leaf"></i>
+              <span>Spring Boot</span>
+            </span>
+            <span class="skill__item">
+              <i class="fas fa-vial"></i>
+              <span>JUnit</span>
+            </span>
+            <span class="skill__item">
+              <i class="fab fa-react"></i>
+              <span>React</span>
+            </span>
+            <span class="skill__item">
+              <i class="fas fa-chart-line"></i>
+              <span>Numpy</span>
+            </span>
+            <span class="skill__item">
+              <i class="fas fa-brain"></i>
+              <span>Scikit-learn</span>
+            </span>
+          </div>
+        </div>
+
+        <!-- Developer Tools -->
+        <div class="skills__category">
+          <h3>Developer Tools</h3>
+          <div class="skills__list">
+            <span class="skill__item">
+              <i class="fas fa-code"></i>
+              <span>IntelliJ IDEA</span>
+            </span>
+            <span class="skill__item">
+              <i class="fab fa-git-alt"></i>
+              <span>Git</span>
+            </span>
+            <span class="skill__item">
+              <i class="fab fa-github"></i>
+              <span>Github</span>
+            </span>
+            <span class="skill__item">
+              <i class="fab fa-docker"></i>
+              <span>Docker</span>
+            </span>
+            <span class="skill__item">
+              <i class="fas fa-cubes"></i>
+              <span>Maven</span>
+            </span>
+            <span class="skill__item">
+              <i class="fab fa-linux"></i>
+              <span>Linux</span>
+            </span>
+            <span class="skill__item">
+              <i class="fas fa-terminal"></i>
+              <span>Vim</span>
+            </span>
+            <span class="skill__item">
+              <i class="fas fa-database"></i>
+              <span>PostgreSQL</span>
+            </span>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- resume -->
     <section id="resume">
-        <a target="_blank" href="https://github.com/khainguyen21/simple_personal_web/blob/main/resumepdf/Resume.pdf"class="resume-button"><span></span>My Resume</a>
-    </section>    
+      <a
+        target="_blank"
+        href="https://github.com/khainguyen21/simple_personal_web/blob/main/resumepdf/Resume.pdf"
+        class="resume-button"
+        ><span></span>My Resume</a
+      >
+    </section>
 
     <section id="education">
-        <div class="container">
-            <h2>Education</h2>
-            <div class="education__items">
-                <div class="education__item1" title="Northern Alberta Institute of Technology">
-                    <div class="card">
+      <div class="container">
+        <h2>Education</h2>
+        <div class="education__items">
+          <div
+            class="education__item1"
+            title="Northern Alberta Institute of Technology"
+          >
+            <div class="card">
+              <img
+                src="image/nait-removebg-preview.png"
+                style="width: 180px; height: 180px"
+                alt="NAIT Logo"
+              />
+              <h3>Northern Alberta Institute of Technology</h3>
+              <br />
 
-                        <img src="image/nait-removebg-preview.png" style="width: 180px; height: 180px;" alt="NAIT Logo">
-                        <h3>Northern Alberta Institute of Technology</h3>
-                        <br>
-
-                        <h4>August 2022 - May 2023</h4>
-                        <h4>Computer Engineering</h4>
-                        <p>✓ Proficiency in C#.NET programming, spanning from basic to intermediate levels.</p>
-                        <p>✓ Familiarity with essential data structures including queues, stacks, linked lists, and threads.</p>
-                        <p>✓ Ability to design and implement algorithms using C# forms, contributing to website development projects.</p>
-                        <p>✓ Knowledge of basic web development technologies, including HTML, CSS, and JavaScript.</p>
-                        <p>✓ Understanding of SQL fundamentals for database management and querying.</p>
-                    </div>
-                </div>
-
-                <div class="education__item2" title="Evegreen Valley College">
-                    <div class="card">
-                        <img src="image/evc-removebg-preview.png" style="width: 180px; height: 180px;" alt="EVC Logo">
-                        <h3>Evergreen Valley College</h3>
-                        <br>
-                        <h4>January 2024 - Present</h4>
-                        <h4>A.A Computer Science</h4>
-                        <p>✓ Learned fundamental programming concepts in Java, including object-oriented programming (OOP)</p>
-                        <p>✓ Implemented and analyzed key data structures such as arrays, linked lists, stacks, queues, trees, and hash tables to improve algorithm efficiency.</p>
-                        <p>✓ Applied statistical analysis, data visualization, and machine learning techniques using Python to analyze and interpret real-world datasets.</p>
-                        <p>✓ Studied fundamental mathematical concepts for computer science, including logic, set theory, combinatorics, graph theory, and proof techniques.</p>
-                        <p>✓ Studied limits, derivatives, and integrals with applications in optimization, motion analysis, and mathematical modeling.</p>
-                        <p>✓ Expanded knowledge of integration techniques, series, and parametric equations, with applications in physics and engineering problems.</p>
-                    </div>
-                </div>
+              <h4>August 2022 - May 2023</h4>
+              <h4>Computer Engineering</h4>
+              <p>
+                ✓ Proficiency in C#.NET programming, spanning from basic to
+                intermediate levels.
+              </p>
+              <p>
+                ✓ Familiarity with essential data structures including queues,
+                stacks, linked lists, and threads.
+              </p>
+              <p>
+                ✓ Ability to design and implement algorithms using C# forms,
+                contributing to website development projects.
+              </p>
+              <p>
+                ✓ Knowledge of basic web development technologies, including
+                HTML, CSS, and JavaScript.
+              </p>
+              <p>
+                ✓ Understanding of SQL fundamentals for database management and
+                querying.
+              </p>
             </div>
+          </div>
+
+          <div class="education__item2" title="Evegreen Valley College">
+            <div class="card">
+              <img
+                src="image/evc-removebg-preview.png"
+                style="width: 180px; height: 180px"
+                alt="EVC Logo"
+              />
+              <h3>Evergreen Valley College</h3>
+              <br />
+              <h4>January 2024 - Present</h4>
+              <h4>A.A Computer Science</h4>
+              <p>
+                ✓ Learned fundamental programming concepts in Java, including
+                object-oriented programming (OOP)
+              </p>
+              <p>
+                ✓ Implemented and analyzed key data structures such as arrays,
+                linked lists, stacks, queues, trees, and hash tables to improve
+                algorithm efficiency.
+              </p>
+              <p>
+                ✓ Applied statistical analysis, data visualization, and machine
+                learning techniques using Python to analyze and interpret
+                real-world datasets.
+              </p>
+              <p>
+                ✓ Studied fundamental mathematical concepts for computer
+                science, including logic, set theory, combinatorics, graph
+                theory, and proof techniques.
+              </p>
+              <p>
+                ✓ Studied limits, derivatives, and integrals with applications
+                in optimization, motion analysis, and mathematical modeling.
+              </p>
+              <p>
+                ✓ Expanded knowledge of integration techniques, series, and
+                parametric equations, with applications in physics and
+                engineering problems.
+              </p>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
-   
+
     <!-- footer -->
     <footer>
-        <div class="background">
-            <svg
-              version="1.1"
-              xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
-              x="0px"
-              y="0px"
-              width="100%"
-              height="100%"
-              viewBox="0 0 1600 900"
-            >
-              <defs>
-                <path
-                  id="wave"
-                  fill="#8B8B8B"
-                  d="M-363.852,502.589c0,0,236.988-41.997,505.475,0
+      <div class="background">
+        <svg
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          x="0px"
+          y="0px"
+          width="100%"
+          height="100%"
+          viewBox="0 0 1600 900"
+        >
+          <defs>
+            <path
+              id="wave"
+              fill="#8B8B8B"
+              d="M-363.852,502.589c0,0,236.988-41.997,505.475,0
           s371.981,38.998,575.971,0s293.985-39.278,505.474,5.859s493.475,48.368,716.963-4.995v560.106H-363.852V502.589z"
-                />
-              </defs>
-              <g>
-                <use xlink:href="#wave" opacity=".4">
-                  <animateTransform
-                    attributeName="transform"
-                    attributeType="XML"
-                    type="translate"
-                    dur="8s"
-                    calcMode="spline"
-                    values="270 230; -334 180; 270 230"
-                    keyTimes="0; .5; 1"
-                    keySplines="0.42, 0, 0.58, 1.0;0.42, 0, 0.58, 1.0"
-                    repeatCount="indefinite"
-                  />
-                </use>
-                <use xlink:href="#wave" opacity=".6">
-                  <animateTransform
-                    attributeName="transform"
-                    attributeType="XML"
-                    type="translate"
-                    dur="6s"
-                    calcMode="spline"
-                    values="-270 230;243 220;-270 230"
-                    keyTimes="0; .6; 1"
-                    keySplines="0.42, 0, 0.58, 1.0;0.42, 0, 0.58, 1.0"
-                    repeatCount="indefinite"
-                  />
-                </use>
-                <use xlink:href="#wave" opacty=".9">
-                  <animateTransform
-                    attributeName="transform"
-                    attributeType="XML"
-                    type="translate"
-                    dur="4s"
-                    calcMode="spline"
-                    values="0 230;-140 200;0 230"
-                    keyTimes="0; .4; 1"
-                    keySplines="0.42, 0, 0.58, 1.0;0.42, 0, 0.58, 1.0"
-                    repeatCount="indefinite"
-                  />
-                </use>
-              </g>
-            </svg>
-          </div>
-    <section id="footer__links">
+            />
+          </defs>
+          <g>
+            <use xlink:href="#wave" opacity=".4">
+              <animateTransform
+                attributeName="transform"
+                attributeType="XML"
+                type="translate"
+                dur="8s"
+                calcMode="spline"
+                values="270 230; -334 180; 270 230"
+                keyTimes="0; .5; 1"
+                keySplines="0.42, 0, 0.58, 1.0;0.42, 0, 0.58, 1.0"
+                repeatCount="indefinite"
+              />
+            </use>
+            <use xlink:href="#wave" opacity=".6">
+              <animateTransform
+                attributeName="transform"
+                attributeType="XML"
+                type="translate"
+                dur="6s"
+                calcMode="spline"
+                values="-270 230;243 220;-270 230"
+                keyTimes="0; .6; 1"
+                keySplines="0.42, 0, 0.58, 1.0;0.42, 0, 0.58, 1.0"
+                repeatCount="indefinite"
+              />
+            </use>
+            <use xlink:href="#wave" opacty=".9">
+              <animateTransform
+                attributeName="transform"
+                attributeType="XML"
+                type="translate"
+                dur="4s"
+                calcMode="spline"
+                values="0 230;-140 200;0 230"
+                keyTimes="0; .4; 1"
+                keySplines="0.42, 0, 0.58, 1.0;0.42, 0, 0.58, 1.0"
+                repeatCount="indefinite"
+              />
+            </use>
+          </g>
+        </svg>
+      </div>
+      <section id="footer__links">
         <ul class="socials">
-            <li><a href="#banner">About</a></li>
-            <li><a href="#things">Tech Stack</a></li>
-            <li><a href="#education">Education</a></li>
+          <li><a href="#banner">About</a></li>
+          <li><a href="#things">Tech Stack</a></li>
+          <li><a href="#education">Education</a></li>
         </ul>
         <p class="legal">© 2025 All rights reserved</p>
-    </section>
+      </section>
     </footer>
 
-
-    
-    <script src="https://kit.fontawesome.com/28c0af3030.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/28c0af3030.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-    <script src = "js/main.js"></script>
-   
-</body>
+    <script src="js/main.js"></script>
+  </body>
 </html>
