@@ -1,14 +1,14 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#6B9FEE" />
-    <!-- Google Fonts -->
+    <meta name="theme-color" content="#0a0a0f" />
+    <!-- Google Fonts - Distinctive Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
 
@@ -23,24 +23,48 @@
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="css/style_v2.css" />
-    <title>Khai Nguyen</title>
+    <title>Hong Khai Nguyen | Software Engineer</title>
   </head>
   <body>
+    <!-- Animated Grid Background -->
+    <div class="grid-bg"></div>
+    <div class="glow-orb glow-orb--1"></div>
+    <div class="glow-orb glow-orb--2"></div>
+    <div class="glow-orb glow-orb--3"></div>
+
+    <!-- Scanline Effect -->
+    <div class="scanlines"></div>
+
     <!-- header -->
     <header>
       <div class="container">
         <nav class="navbar">
           <!-- logo -->
           <div class="navbar__logo">
-            <img src="image/klogo.png" alt="wesite logo" />
+            <span class="logo-text">&lt;KN /&gt;</span>
           </div>
           <!-- link -->
           <ul class="navbar__links">
-            <li class="navbar__link"><a href="#banner">About</a></li>
-            <li class="navbar__link"><a href="#things">Tech Stack</a></li>
-            <li class="navbar__link"><a href="#education">Education</a></li>
+            <li class="navbar__link">
+              <a href="#hero"><span class="nav-number">01.</span>About</a>
+            </li>
+            <li class="navbar__link">
+              <a href="#projects"
+                ><span class="nav-number">02.</span>Projects</a
+              >
+            </li>
+            <li class="navbar__link">
+              <a href="#experience"
+                ><span class="nav-number">03.</span>Experience</a
+              >
+            </li>
+            <li class="navbar__link">
+              <a href="#skills"><span class="nav-number">04.</span>Skills</a>
+            </li>
             <a href="mailto:khainguyen2004@gmail.com"
-              ><button class="navbar__btn">Contact</button></a
+              ><button class="navbar__btn">
+                <span class="btn-icon">&gt;_</span> Contact
+              </button></a
             >
           </ul>
           <!-- menu button -->
@@ -48,7 +72,7 @@
             <div class="navbar__icon"></div>
           </div>
           <div class="theme-toggle" role="button" aria-label="Toggle theme">
-            <i class="fas fa-moon"></i>
+            <i class="fas fa-terminal"></i>
           </div>
         </nav>
       </div>
@@ -57,328 +81,609 @@
     <!-- overlay for mobile menu -->
     <div id="overlay"></div>
 
-    <!-- banner -->
-    <section id="banner">
+    <!-- Hero Section -->
+    <section id="hero">
       <div class="container">
-        
-        <!-- heading -->
-        <div class="banner__heading fade-in-up">
-          <h1>Hello, I'm Hong Khai Nguyen</h1>
-          <p>
-            I’m a sophomore majoring in Computer Science at Evergreen Valley
-            College with a strong interest in backend software engineering.
+        <div class="hero__content">
+          <div class="hero__text fade-in-up">
+            <p class="hero__greeting terminal-text">
+              <span class="terminal-prompt">$</span> whoami
+            </p>
+            <h1 class="hero__name glitch" data-text="Hong Khai Nguyen">
+              Hong Khai Nguyen
+            </h1>
+            <h2 class="hero__title">
+              <span class="typing-container">
+                <span class="typing-text"></span>
+                <span class="cursor">|</span>
+              </span>
+            </h2>
+            <div class="hero__description">
+              <p>
+                Computer Science student at
+                <span class="highlight">Evergreen Valley College</span>
+                with a passion for building scalable backend systems. Currently
+                developing expertise in
+                <span class="highlight">Java</span>,
+                <span class="highlight">Spring Boot</span>, and
+                <span class="highlight">PostgreSQL</span>.
+              </p>
+              <p>
+                Transferring to
+                <span class="highlight">University of California</span> in Fall
+                2027 to pursue a Bachelor's degree. Seeking my first software
+                engineering internship to contribute to impactful, real-world
+                projects.
+              </p>
+            </div>
+            <div class="hero__cta">
+              <a href="#projects" class="btn btn--primary">
+                <span class="btn-icon">&gt;</span> View Projects
+              </a>
+              <a
+                href="resumepdf/hong_nguyen_resume(SUMMARY).pdf"
+                target="_blank"
+                class="btn btn--outline"
+              >
+                <i class="fas fa-file-alt"></i> Resume
+              </a>
+            </div>
+            <div class="hero__socials">
+              <a
+                href="https://www.linkedin.com/in/khainguyen21/"
+                target="_blank"
+                aria-label="LinkedIn"
+                class="social-link"
+              >
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a
+                href="https://github.com/khainguyen21"
+                target="_blank"
+                aria-label="GitHub"
+                class="social-link"
+              >
+                <i class="fab fa-github"></i>
+              </a>
+              <a
+                href="mailto:khainguyen2004@gmail.com"
+                aria-label="Email"
+                class="social-link"
+              >
+                <i class="fas fa-envelope"></i>
+              </a>
+              <a
+                href="https://open.spotify.com/user/31adzxz75ad6xq6e4fzmq6shltjy"
+                target="_blank"
+                aria-label="Spotify"
+                class="social-link"
+              >
+                <i class="fab fa-spotify"></i>
+              </a>
+            </div>
+          </div>
+          <div class="hero__visual fade-in-up delay-200">
+            <div class="terminal-window">
+              <div class="terminal-header">
+                <span class="terminal-dot terminal-dot--red"></span>
+                <span class="terminal-dot terminal-dot--yellow"></span>
+                <span class="terminal-dot terminal-dot--green"></span>
+                <span class="terminal-title">khai@portfolio ~ </span>
+              </div>
+              <div class="terminal-body">
+                <div class="terminal-line">
+                  <span class="terminal-prompt">$</span> cat about.json
+                </div>
+                <pre class="terminal-output">
+{
+  "name": "Hong Khai Nguyen",
+  "location": "San Jose, CA",
+  "education": "Computer Science",
+  "focus": "Backend Engineering",
+  "status": "Open to Internships",
+  "gpa": 3.84
+}</pre
+                >
+                <div class="terminal-line">
+                  <span class="terminal-prompt">$</span>
+                  <span class="terminal-cursor">_</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="scroll-indicator">
+          <span>Scroll</span>
+          <div class="scroll-line"></div>
+        </div>
+      </div>
+    </section>
+    <!-- Projects Section -->
+    <section id="projects">
+      <div class="container">
+        <div class="section-header fade-in-up">
+          <span class="section-tag">&lt;projects&gt;</span>
+          <h2>Featured Projects</h2>
+          <p class="section-subtitle">
+            Things I've built that showcase my skills
           </p>
-          <p>
-            After completing my community college requirements in May 2027, I
-            will continue to transfer to a University of California campus to pursue a
-            Bachelor’s degree in Computer Science starting in Fall 2027.
-          </p>
-          <p>
-            My current goal is to secure my first software engineering
-            internship, where I can apply my technical skills, learn from
-            real-world development teams, and contribute to impactful projects
-            that solve meaningful problems. 
-          </p>
-          <p>
-            I’m currently developing my skills in Java, Spring Boot, and PostgreSQL while building projects that
-            strengthen my understanding of scalable backend systems. Right now,
-            I’m working on an MVP — a full-stack web application that allows
-            students to book tutoring appointments by subject and tutor, built
-            using Java, Spring Boot, and SQL.
-          </p>
+        </div>
 
-          <div class="banner__socials">
-            <a
-              href="https://www.linkedin.com/in/khainguyen21/"
-              target="_blank"
-              aria-label="LinkedIn"
-              ><i class="fab fa-linkedin"></i
-            ></a>
-            <a
-              href="https://github.com/khainguyen21"
-              target="_blank"
-              aria-label="GitHub"
-              ><i class="fab fa-github"></i
-            ></a>
-            <a
-              href="https://open.spotify.com/user/31adzxz75ad6xq6e4fzmq6shltjy"
-              target="_blank"
-              aria-label="Spotify"
-              ><i class="fab fa-spotify"></i
-            ></a>
+        <div class="projects-grid">
+          <!-- Project 1: EVC Tutor Schedule -->
+          <article
+            class="project-card project-card--featured fade-in-up delay-100"
+          >
+            <div class="project-card__image">
+              <div class="project-placeholder">
+                <i class="fas fa-calendar-alt"></i>
+              </div>
+              <div class="project-card__overlay">
+                <a
+                  href="https://evc-tutor-schedule.vercel.app/"
+                  target="_blank"
+                  class="project-link"
+                >
+                  <i class="fas fa-external-link-alt"></i>
+                </a>
+              </div>
+            </div>
+            <div class="project-card__content">
+              <div class="project-card__header">
+                <span class="project-type">Full-Stack Application</span>
+                <div class="project-links">
+                  <a
+                    href="https://evc-tutor-schedule.vercel.app/"
+                    target="_blank"
+                    aria-label="Live Demo"
+                  >
+                    <i class="fas fa-external-link-alt"></i>
+                  </a>
+                </div>
+              </div>
+              <h3 class="project-card__title">EVC Tutor Schedule Project</h3>
+              <p class="project-card__description">
+                Scalable tutoring application using React 18 and TypeScript,
+                reducing student search time by 40% with real-time data
+                filtering. Features dark mode, CSS Variables, and accessibility
+                across 3 campus locations.
+              </p>
+              <div class="project-card__stats">
+                <span><i class="fas fa-bolt"></i> 60fps animations</span>
+                <span><i class="fas fa-clock"></i> sub-100ms interactions</span>
+              </div>
+              <ul class="project-card__tech">
+                <li>React 18</li>
+                <li>TypeScript</li>
+                <li>Vite</li>
+                <li>CSS Variables</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Project 2: Learnr AI Tutor -->
+          <article class="project-card fade-in-up delay-200">
+            <div class="project-card__image">
+              <div class="project-placeholder">
+                <i class="fas fa-robot"></i>
+              </div>
+              <div class="project-card__overlay">
+                <a
+                  href="https://devpost.com/software/learnr-x8bpqd"
+                  target="_blank"
+                  class="project-link"
+                >
+                  <i class="fas fa-external-link-alt"></i>
+                </a>
+              </div>
+            </div>
+            <div class="project-card__content">
+              <div class="project-card__header">
+                <span class="project-type">CaIHacks2025 Hackathon</span>
+                <div class="project-links">
+                  <a
+                    href="https://devpost.com/software/learnr-x8bpqd"
+                    target="_blank"
+                    aria-label="Devpost"
+                  >
+                    <i class="fas fa-external-link-alt"></i>
+                  </a>
+                </div>
+              </div>
+              <h3 class="project-card__title">Learnr - AI Learning Tutor</h3>
+              <p class="project-card__description">
+                AI-powered learning tutor using TypeScript (React) and Node.js,
+                integrating VAPI API for conversational lectures where students
+                can interact, ask questions, and control sessions in real-time.
+              </p>
+              <ul class="project-card__tech">
+                <li>TypeScript</li>
+                <li>React</li>
+                <li>Node.js</li>
+                <li>VAPI API</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Project 3: Job Classification ML -->
+          <article class="project-card fade-in-up delay-300">
+            <div class="project-card__image">
+              <div class="project-placeholder">
+                <i class="fas fa-brain"></i>
+              </div>
+              <div class="project-card__overlay">
+                <a
+                  href="https://github.com/khainguyen21/jobs_classification"
+                  target="_blank"
+                  class="project-link"
+                >
+                  <i class="fab fa-github"></i>
+                </a>
+              </div>
+            </div>
+            <div class="project-card__content">
+              <div class="project-card__header">
+                <span class="project-type">Machine Learning</span>
+                <div class="project-links">
+                  <a
+                    href="https://github.com/khainguyen21/jobs_classification"
+                    target="_blank"
+                    aria-label="GitHub"
+                  >
+                    <i class="fab fa-github"></i>
+                  </a>
+                </div>
+              </div>
+              <h3 class="project-card__title">
+                Job Career Level Classification
+              </h3>
+              <p class="project-card__description">
+                Career-level classification model achieving 77% accuracy using
+                Random Forest with TF-IDF vectorization, SMOTE oversampling, and
+                GridSearchCV hyperparameter tuning. Improved F1 score by 15%.
+              </p>
+              <ul class="project-card__tech">
+                <li>Python</li>
+                <li>Scikit-learn</li>
+                <li>TF-IDF</li>
+                <li>Random Forest</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+      <div class="container">
+        <div class="section-header fade-in-up">
+          <span class="section-tag">&lt;experience&gt;</span>
+          <h2>Work Experience</h2>
+          <p class="section-subtitle">Where I've contributed and grown</p>
+        </div>
+
+        <div class="experience-timeline">
+          <!-- Experience 1 -->
+          <div class="timeline-item fade-in-up delay-100">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <div class="timeline-info">
+                  <h3>Java Programming Tutor</h3>
+                  <span class="timeline-company">Evergreen Valley College</span>
+                </div>
+                <span class="timeline-date">Sep 2025 - Dec 2025</span>
+              </div>
+              <ul class="timeline-details">
+                <li>
+                  Improved student mastery of Java, OOP, and data structures,
+                  increasing course pass rates by ~25%
+                </li>
+                <li>
+                  Delivered 3-hour workshops on algorithms and debugging,
+                  achieving 20% increase in assessment scores
+                </li>
+                <li>
+                  Reduced assignment errors by ~30% through targeted one-on-one
+                  tutoring sessions
+                </li>
+              </ul>
+              <div class="timeline-tags">
+                <span>Java</span>
+                <span>OOP</span>
+                <span>Data Structures</span>
+                <span>Mentoring</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Experience 2 -->
+          <div class="timeline-item fade-in-up delay-200">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <div class="timeline-info">
+                  <h3>Data Science Embedded Tutor</h3>
+                  <span class="timeline-company">Evergreen Valley College</span>
+                </div>
+                <span class="timeline-date">Jan 2025 - May 2025</span>
+              </div>
+              <ul class="timeline-details">
+                <li>
+                  Guided students through data cleaning, statistical analysis,
+                  and machine learning workflows
+                </li>
+                <li>
+                  Boosted student lab completion and code accuracy by 25% based
+                  on assessment scores
+                </li>
+                <li>
+                  Introduced regression and classification techniques using
+                  Python/NumPy
+                </li>
+              </ul>
+              <div class="timeline-tags">
+                <span>Python</span>
+                <span>NumPy</span>
+                <span>Machine Learning</span>
+                <span>Statistics</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Experience 3 -->
+          <div class="timeline-item fade-in-up delay-300">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <div class="timeline-info">
+                  <h3>CS Club Project Manager</h3>
+                  <span class="timeline-company">Evergreen Valley College</span>
+                </div>
+                <span class="timeline-date">Jan 2024 - May 2024</span>
+              </div>
+              <ul class="timeline-details">
+                <li>
+                  Led 4-member team to deliver autonomous Raspberry Pi G1 tank
+                  with ~95% obstacle-avoidance accuracy
+                </li>
+                <li>
+                  Coordinated hardware integration and iterative navigation
+                  testing within 8 weeks
+                </li>
+              </ul>
+              <div class="timeline-tags">
+                <span>Raspberry Pi</span>
+                <span>Leadership</span>
+                <span>Hardware</span>
+                <span>Team Management</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
-    <!-- things -->
-    <section id="things">
+
+    <!-- Skills Section -->
+    <section id="skills">
       <div class="container">
-        <!-- heading -->
-        <h2 class="fade-in-up">Tech Stack</h2>
-
-        <!-- Languages -->
-        <div class="skills__category fade-in-up delay-100">
-          <h3>Languages</h3>
-          <div class="skills__list">
-            <span class="skill__item">
-              <i class="fab fa-java"></i>
-              <span>Java</span>
-            </span>
-            <span class="skill__item">
-              <i class="fas fa-database"></i>
-              <span>SQL</span>
-            </span>
-            <span class="skill__item">
-              <i class="fab fa-python"></i>
-              <span>Python (Data Analysis)</span>
-            </span>
-            <span class="skill__item">
-              <i class="fab fa-js"></i>
-              <span>Javascript</span>
-            </span>
-            <span class="skill__item">
-              <i class="fab fa-js"></i>
-              <span>Typescript</span>
-            </span>
-          </div>
+        <div class="section-header fade-in-up">
+          <span class="section-tag">&lt;skills&gt;</span>
+          <h2>Tech Stack</h2>
+          <p class="section-subtitle">Technologies I work with</p>
         </div>
 
-        <!-- Frameworks -->
-        <div class="skills__category">
-          <h3>Frameworks</h3>
-          <div class="skills__list">
-            <span class="skill__item">
-              <i class="fas fa-leaf"></i>
-              <span>Spring Boot</span>
-            </span>
-            <span class="skill__item">
-              <i class="fas fa-vial"></i>
-              <span>JUnit</span>
-            </span>
-            <span class="skill__item">
-              <i class="fab fa-react"></i>
-              <span>React</span>
-            </span>
-            <span class="skill__item">
-              <i class="fas fa-chart-line"></i>
-              <span>Numpy</span>
-            </span>
-            <span class="skill__item">
-              <i class="fas fa-brain"></i>
-              <span>Scikit-learn</span>
-            </span>
-          </div>
-        </div>
-
-        <!-- Developer Tools -->
-        <div class="skills__category">
-          <h3>Developer Tools</h3>
-          <div class="skills__list">
-            <span class="skill__item">
+        <div class="skills-container">
+          <!-- Languages -->
+          <div class="skill-category fade-in-up delay-100">
+            <div class="skill-category__header">
               <i class="fas fa-code"></i>
-              <span>IntelliJ IDEA</span>
-            </span>
-            <span class="skill__item">
-              <i class="fab fa-git-alt"></i>
-              <span>Git</span>
-            </span>
-            <span class="skill__item">
-              <i class="fab fa-github"></i>
-              <span>Github</span>
-            </span>
-            <span class="skill__item">
-              <i class="fab fa-docker"></i>
-              <span>Docker</span>
-            </span>
-            <span class="skill__item">
-              <i class="fas fa-cubes"></i>
-              <span>Maven</span>
-            </span>
-            <span class="skill__item">
-              <i class="fab fa-linux"></i>
-              <span>Linux</span>
-            </span>
-            <span class="skill__item">
-              <i class="fas fa-terminal"></i>
-              <span>Vim</span>
-            </span>
-            <span class="skill__item">
-              <i class="fas fa-database"></i>
-              <span>PostgreSQL</span>
-            </span>
+              <h3>Languages</h3>
+            </div>
+            <div class="skill-category__items">
+              <div class="skill-item" data-skill="Java">
+                <i class="fab fa-java"></i>
+                <span>Java</span>
+              </div>
+              <div class="skill-item" data-skill="TypeScript">
+                <i class="fab fa-js"></i>
+                <span>TypeScript</span>
+              </div>
+              <div class="skill-item" data-skill="JavaScript">
+                <i class="fab fa-js"></i>
+                <span>JavaScript</span>
+              </div>
+              <div class="skill-item" data-skill="Python">
+                <i class="fab fa-python"></i>
+                <span>Python</span>
+              </div>
+              <div class="skill-item" data-skill="SQL">
+                <i class="fas fa-database"></i>
+                <span>SQL</span>
+              </div>
+              <div class="skill-item" data-skill="HTML/CSS">
+                <i class="fab fa-html5"></i>
+                <span>HTML/CSS</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Frameworks -->
+          <div class="skill-category fade-in-up delay-200">
+            <div class="skill-category__header">
+              <i class="fas fa-layer-group"></i>
+              <h3>Frameworks & Libraries</h3>
+            </div>
+            <div class="skill-category__items">
+              <div class="skill-item" data-skill="Spring Boot">
+                <i class="fas fa-leaf"></i>
+                <span>Spring Boot</span>
+              </div>
+              <div class="skill-item" data-skill="React">
+                <i class="fab fa-react"></i>
+                <span>React</span>
+              </div>
+              <div class="skill-item" data-skill="JUnit">
+                <i class="fas fa-vial"></i>
+                <span>JUnit</span>
+              </div>
+              <div class="skill-item" data-skill="NumPy">
+                <i class="fas fa-chart-line"></i>
+                <span>NumPy</span>
+              </div>
+              <div class="skill-item" data-skill="Scikit-learn">
+                <i class="fas fa-brain"></i>
+                <span>Scikit-learn</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tools -->
+          <div class="skill-category fade-in-up delay-300">
+            <div class="skill-category__header">
+              <i class="fas fa-tools"></i>
+              <h3>Developer Tools</h3>
+            </div>
+            <div class="skill-category__items">
+              <div class="skill-item" data-skill="Git">
+                <i class="fab fa-git-alt"></i>
+                <span>Git</span>
+              </div>
+              <div class="skill-item" data-skill="Docker">
+                <i class="fab fa-docker"></i>
+                <span>Docker</span>
+              </div>
+              <div class="skill-item" data-skill="PostgreSQL">
+                <i class="fas fa-database"></i>
+                <span>PostgreSQL</span>
+              </div>
+              <div class="skill-item" data-skill="Linux">
+                <i class="fab fa-linux"></i>
+                <span>Linux</span>
+              </div>
+              <div class="skill-item" data-skill="Maven">
+                <i class="fas fa-cubes"></i>
+                <span>Maven</span>
+              </div>
+              <div class="skill-item" data-skill="Vite">
+                <i class="fas fa-bolt"></i>
+                <span>Vite</span>
+              </div>
+              <div class="skill-item" data-skill="IntelliJ IDEA">
+                <i class="fas fa-code"></i>
+                <span>IntelliJ IDEA</span>
+              </div>
+              <div class="skill-item" data-skill="Vim">
+                <i class="fas fa-terminal"></i>
+                <span>Vim</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- resume -->
-    <section id="resume">
-      <a
-        target="_blank"
-        href="resumepdf/hong_nguyen_resume(SUMMARY).pdf"
-        class="resume-button"
-        ><span></span>My Resume</a
-      >
-    </section>
-
+    <!-- Education Section -->
     <section id="education">
       <div class="container">
-        <h2 class="fade-in-up">Education</h2>
-        <div class="education__items">
-          <div
-            class="education__item1 fade-in-up delay-100"
-            title="Northern Alberta Institute of Technology"
-          >
-            <div class="card">
-              <img
-                src="image/nait-removebg-preview.png"
-                style="width: 180px; height: 180px"
-                alt="NAIT Logo"
-              />
-              <h3>Northern Alberta Institute of Technology</h3>
-              <br />
+        <div class="section-header fade-in-up">
+          <span class="section-tag">&lt;education&gt;</span>
+          <h2>Education</h2>
+          <p class="section-subtitle">My academic journey</p>
+        </div>
 
-              <h4>August 2022 - May 2023</h4>
-              <h4>Computer Engineering</h4>
-              <p>
-                ✓ Proficiency in C#.NET programming, spanning from basic to
-                intermediate levels.
+        <div class="education-grid">
+          <div class="education-card fade-in-up delay-100">
+            <div class="education-card__icon">
+              <i class="fas fa-graduation-cap"></i>
+            </div>
+            <div class="education-card__content">
+              <div class="education-card__header">
+                <h3>Evergreen Valley College</h3>
+                <span class="education-date">Jan 2024 - May 2027</span>
+              </div>
+              <p class="education-degree">
+                Associate in Science for Transfer, Computer Science
               </p>
-              <p>
-                ✓ Familiarity with essential data structures including queues,
-                stacks, linked lists, and threads.
+              <p class="education-gpa">
+                GPA: <span class="highlight">3.84</span>
               </p>
-              <p>
-                ✓ Ability to design and implement algorithms using C# forms,
-                contributing to website development projects.
-              </p>
-              <p>
-                ✓ Knowledge of basic web development technologies, including
-                HTML, CSS, and JavaScript.
-              </p>
-              <p>
-                ✓ Understanding of SQL fundamentals for database management and
-                querying.
-              </p>
+              <div class="education-highlights">
+                <span>Data Structures & Algorithms</span>
+                <span>Object-Oriented Programming</span>
+                <span>Discrete Mathematics</span>
+                <span>Calculus I, II, III</span>
+              </div>
             </div>
           </div>
 
-          <div class="education__item2 fade-in-up delay-200" title="Evegreen Valley College">
-            <div class="card">
-              <img
-                src="image/evc-removebg-preview.png"
-                alt="EVC Logo"
-              />
-              <h3>Evergreen Valley College</h3>
-              <br />
-              <h4>January 2024 - Present</h4>
-              <h4>A.A Computer Science</h4>
-              <p>
-                ✓ Learned fundamental programming concepts in Java, including
-                object-oriented programming (OOP)
+          <div class="education-card fade-in-up delay-200">
+            <div class="education-card__icon">
+              <i class="fas fa-university"></i>
+            </div>
+            <div class="education-card__content">
+              <div class="education-card__header">
+                <h3>University of California</h3>
+                <span class="education-date">Fall 2027 - May 2029</span>
+              </div>
+              <p class="education-degree">
+                Bachelor's Degree in Computer Science
               </p>
-              <p>
-                ✓ Implemented and analyzed key data structures such as arrays,
-                linked lists, stacks, queues, trees, and hash tables to improve
-                algorithm efficiency.
-              </p>
-              <p>
-                ✓ Applied statistical analysis, data visualization, and machine
-                learning techniques using Python to analyze and interpret
-                real-world datasets.
-              </p>
-              <p>
-                ✓ Studied fundamental mathematical concepts for computer
-                science, including logic, set theory, combinatorics, graph
-                theory, and proof techniques.
-              </p>
-              <p>
-                ✓ Studied limits, derivatives, and integrals with applications
-                in optimization, motion analysis, and mathematical modeling.
-              </p>
-              <p>
-                ✓ Expanded knowledge of integration techniques, series, and
-                parametric equations, with applications in physics and
-                engineering problems.
-              </p>
+              <p class="education-status">Planned Transfer</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- footer -->
+    <!-- Footer -->
     <footer>
-      <div class="background">
-        <svg
-          version="1.1"
-          xmlns="http://www.w3.org/2000/svg"
-          xmlns:xlink="http://www.w3.org/1999/xlink"
-          x="0px"
-          y="0px"
-          width="100%"
-          height="100%"
-          viewBox="0 0 1600 900"
-        >
-          <defs>
-            <path
-              id="wave"
-              fill="#8B8B8B"
-              d="M-363.852,502.589c0,0,236.988-41.997,505.475,0
-          s371.981,38.998,575.971,0s293.985-39.278,505.474,5.859s493.475,48.368,716.963-4.995v560.106H-363.852V502.589z"
-            />
-          </defs>
-          <g>
-            <use xlink:href="#wave" opacity=".4">
-              <animateTransform
-                attributeName="transform"
-                attributeType="XML"
-                type="translate"
-                dur="8s"
-                calcMode="spline"
-                values="270 230; -334 180; 270 230"
-                keyTimes="0; .5; 1"
-                keySplines="0.42, 0, 0.58, 1.0;0.42, 0, 0.58, 1.0"
-                repeatCount="indefinite"
-              />
-            </use>
-            <use xlink:href="#wave" opacity=".6">
-              <animateTransform
-                attributeName="transform"
-                attributeType="XML"
-                type="translate"
-                dur="6s"
-                calcMode="spline"
-                values="-270 230;243 220;-270 230"
-                keyTimes="0; .6; 1"
-                keySplines="0.42, 0, 0.58, 1.0;0.42, 0, 0.58, 1.0"
-                repeatCount="indefinite"
-              />
-            </use>
-            <use xlink:href="#wave" opacty=".9">
-              <animateTransform
-                attributeName="transform"
-                attributeType="XML"
-                type="translate"
-                dur="4s"
-                calcMode="spline"
-                values="0 230;-140 200;0 230"
-                keyTimes="0; .4; 1"
-                keySplines="0.42, 0, 0.58, 1.0;0.42, 0, 0.58, 1.0"
-                repeatCount="indefinite"
-              />
-            </use>
-          </g>
-        </svg>
+      <div class="container">
+        <div class="footer__content">
+          <div class="footer__brand">
+            <span class="logo-text">&lt;KN /&gt;</span>
+            <p>Building scalable backend systems, one commit at a time.</p>
+          </div>
+          <div class="footer__links">
+            <div class="footer__nav">
+              <a href="#hero">About</a>
+              <a href="#projects">Projects</a>
+              <a href="#experience">Experience</a>
+              <a href="#skills">Skills</a>
+            </div>
+            <div class="footer__socials">
+              <a
+                href="https://www.linkedin.com/in/khainguyen21/"
+                target="_blank"
+                aria-label="LinkedIn"
+              >
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a
+                href="https://github.com/khainguyen21"
+                target="_blank"
+                aria-label="GitHub"
+              >
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="mailto:khainguyen2004@gmail.com" aria-label="Email">
+                <i class="fas fa-envelope"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <p class="footer__copyright">
+            <span class="terminal-prompt">$</span> echo "© 2025 Hong Khai
+            Nguyen. All rights reserved."
+          </p>
+          <p class="footer__built">
+            Built with <span class="highlight">&lt;3</span> and lots of
+            <span class="highlight">coffee</span>
+          </p>
+        </div>
       </div>
-      <section id="footer__links">
-        <ul class="socials">
-          <li><a href="#banner">About</a></li>
-          <li><a href="#things">Tech Stack</a></li>
-          <li><a href="#education">Education</a></li>
-        </ul>
-        <p class="legal">© 2025 All rights reserved</p>
-      </section>
     </footer>
 
     <script
