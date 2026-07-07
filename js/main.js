@@ -1,228 +1,288 @@
 // ============================================
-// CYBER TERMINAL PORTFOLIO - Main JavaScript
+// ORGANIC PORTFOLIO — Main JavaScript
 // ============================================
 
-// Mobile Menu
-const menu = document.querySelector(".navbar__links");
-const menuButton = document.querySelector(".navbar__icons");
-const overlay = document.querySelector("#overlay");
+const prefersReducedMotion = window.matchMedia(
+  "(prefers-reduced-motion: reduce)"
+).matches;
 
-if (menuButton) {
-    menuButton.addEventListener('click', () => {
-        menu.classList.toggle("navbar__open");
-        menuButton.classList.toggle("open");
-        overlay.classList.toggle("show");
-        document.body.style.overflow = menu.classList.contains("navbar__open") ? 'hidden' : '';
-    });
-}
+// ============================================
+// REVEAL ON SCROLL
+// ============================================
+const revealEls = document.querySelectorAll(".reveal");
 
-if (overlay) {
-    overlay.addEventListener('click', () => {
-        menu.classList.remove("navbar__open");
-        menuButton.classList.remove("open");
-        overlay.classList.remove("show");
-        document.body.style.overflow = '';
-    });
-}
-
-const navLinks = document.querySelectorAll(".navbar__link a");
-navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        menu.classList.remove("navbar__open");
-        menuButton.classList.remove("open");
-        overlay.classList.remove("show");
-        document.body.style.overflow = '';
-    });
+// Stagger siblings that reveal together (e.g. the three project cards)
+const revealGroups = new Map();
+revealEls.forEach((el) => {
+  const parent = el.parentElement;
+  const index = revealGroups.get(parent) || 0;
+  el.style.transitionDelay = `${Math.min(index * 90, 450)}ms`;
+  revealGroups.set(parent, index + 1);
 });
 
+if (revealEls.length) {
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+  );
+  revealEls.forEach((el) => revealObserver.observe(el));
+}
+
 // ============================================
-// TYPING EFFECT
+// ACTIVE SECTION (nav link + vine leaf)
 // ============================================
-const typingText = document.querySelector('.typing-text');
-const titles = [
-    'Backend Software Engineer',
-    'Java & Spring Boot Developer',
-    'Computer Science Student',
-    'Problem Solver',
-    'Open to Internships'
-];
+const sections = document.querySelectorAll("section[id]");
+const navAnchors = document.querySelectorAll('.nav-links a[href^="#"]');
 
-let titleIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
-let typingSpeed = 100;
+function setActiveSection(id) {
+  navAnchors.forEach((a) => {
+    a.classList.toggle("active", a.getAttribute("href") === `#${id}`);
+  });
+  document.querySelectorAll(".vine-leaf").forEach((leaf) => {
+    leaf.classList.toggle("active", leaf.dataset.section === id);
+  });
+}
 
-function typeEffect() {
-    if (!typingText) return;
+if (sections.length) {
+  const sectionObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) setActiveSection(entry.target.id);
+      });
+    },
+    { threshold: 0.25 }
+  );
+  sections.forEach((section) => sectionObserver.observe(section));
+}
 
-    const currentTitle = titles[titleIndex];
+// ============================================
+// GROWING VINE SCROLL INDICATOR
+// ============================================
+const vine = document.querySelector(".vine");
 
-    if (isDeleting) {
-        typingText.textContent = currentTitle.substring(0, charIndex - 1);
-        charIndex--;
-        typingSpeed = 50;
-    } else {
-        typingText.textContent = currentTitle.substring(0, charIndex + 1);
-        charIndex++;
-        typingSpeed = 100;
+if (vine) {
+  const svg = vine.querySelector("svg");
+  const track = vine.querySelector(".vine-stem-track");
+  const stem = vine.querySelector(".vine-stem");
+  const leavesGroup = vine.querySelector(".vine-leaves");
+  const SVG_NS = "http://www.w3.org/2000/svg";
+  const LEAF_PATH = "M0 0 C-8 -4 -12 -12 -9 -20 C-2 -16 2 -8 0 0 Z";
+  const sectionNames = {
+    about: "About",
+    projects: "Projects",
+    experience: "Experience",
+    skills: "Skills",
+    education: "Education",
+    github: "GitHub",
+    contact: "Contact",
+  };
+
+  let stemLength = 0;
+  let leafData = [];
+
+  function maxScrollDistance() {
+    return Math.max(
+      document.documentElement.scrollHeight - window.innerHeight,
+      1
+    );
+  }
+
+  function buildVine() {
+    if (getComputedStyle(vine).display === "none") {
+      stemLength = 0;
+      return;
     }
 
-    if (!isDeleting && charIndex === currentTitle.length) {
-        isDeleting = true;
-        typingSpeed = 2000;
-    } else if (isDeleting && charIndex === 0) {
-        isDeleting = false;
-        titleIndex = (titleIndex + 1) % titles.length;
-        typingSpeed = 500;
-    }
+    const h = window.innerHeight;
+    svg.setAttribute("viewBox", `0 0 44 ${h}`);
+    const d = `M22 0 Q 34 ${h * 0.125} 22 ${h * 0.25} T 22 ${h * 0.5} T 22 ${
+      h * 0.75
+    } T 22 ${h}`;
+    track.setAttribute("d", d);
+    stem.setAttribute("d", d);
+    stemLength = stem.getTotalLength();
+    stem.style.strokeDasharray = stemLength;
 
-    setTimeout(typeEffect, typingSpeed);
-}
+    leavesGroup.innerHTML = "";
+    leafData = [];
+    let side = 1;
+    sections.forEach((section) => {
+      const fraction = Math.min(
+        Math.max(section.offsetTop / maxScrollDistance(), 0.02),
+        1
+      );
+      const point = stem.getPointAtLength(fraction * stemLength);
 
-setTimeout(typeEffect, 1000);
+      const leaf = document.createElementNS(SVG_NS, "g");
+      leaf.setAttribute("class", "vine-leaf");
+      leaf.dataset.section = section.id;
+      leaf.setAttribute(
+        "transform",
+        `translate(${point.x}, ${point.y}) scale(${side}, 1)`
+      );
 
-// ============================================
-// THEME TOGGLE
-// ============================================
-const root = document.documentElement;
-const themeToggle = document.querySelector('.theme-toggle');
-const themeIcon = themeToggle ? themeToggle.querySelector('i') : null;
-const themeMeta = document.querySelector('meta[name="theme-color"]');
+      const title = document.createElementNS(SVG_NS, "title");
+      title.textContent = sectionNames[section.id] || section.id;
+      leaf.appendChild(title);
 
-function applyTheme(theme) {
-    if (theme === 'light') {
-        root.setAttribute('data-theme', 'light');
-        if (themeIcon) {
-            themeIcon.classList.remove('fa-terminal');
-            themeIcon.classList.add('fa-moon');
-        }
-        if (themeMeta) themeMeta.setAttribute('content', '#f0f4f8');
-    } else {
-        root.removeAttribute('data-theme');
-        if (themeIcon) {
-            themeIcon.classList.remove('fa-moon');
-            themeIcon.classList.add('fa-terminal');
-        }
-        if (themeMeta) themeMeta.setAttribute('content', '#0a0a0f');
-    }
-}
+      const shape = document.createElementNS(SVG_NS, "g");
+      shape.setAttribute("class", "leaf-shape");
+      const path = document.createElementNS(SVG_NS, "path");
+      path.setAttribute("d", LEAF_PATH);
+      shape.appendChild(path);
+      leaf.appendChild(shape);
 
-let savedTheme = localStorage.getItem('theme');
-if (!savedTheme) {
-    savedTheme = 'dark';
-}
-applyTheme(savedTheme);
-
-if (themeToggle) {
-    themeToggle.addEventListener('click', () => {
-        const isLight = root.getAttribute('data-theme') === 'light';
-        const next = isLight ? 'dark' : 'light';
-        applyTheme(next);
-        localStorage.setItem('theme', next);
-    });
-}
-
-// ============================================
-// HEADER SCROLL EFFECT
-// ============================================
-const headerEl = document.querySelector('header');
-
-function updateHeaderScrolled() {
-    if (!headerEl) return;
-    headerEl.classList.toggle('scrolled', window.scrollY > 50);
-}
-
-updateHeaderScrolled();
-window.addEventListener('scroll', updateHeaderScrolled, { passive: true });
-
-// ============================================
-// ACTIVE NAVIGATION LINK
-// ============================================
-const sections = document.querySelectorAll('section[id]');
-const navAnchors = document.querySelectorAll('.navbar__link a');
-
-function setActiveLink(id) {
-    navAnchors.forEach(a => {
-        const href = a.getAttribute('href');
-        if (href && href === `#${id}`) {
-            a.classList.add('active');
-        } else {
-            a.classList.remove('active');
-        }
-    });
-}
-
-if (sections.length && navAnchors.length) {
-    const io = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                setActiveLink(entry.target.id);
-            }
+      leaf.addEventListener("click", () => {
+        section.scrollIntoView({
+          behavior: prefersReducedMotion ? "auto" : "smooth",
         });
-    }, { root: null, threshold: 0.3 });
+      });
 
-    sections.forEach(sec => io.observe(sec));
-}
+      leavesGroup.appendChild(leaf);
+      leafData.push({ el: leaf, fraction });
+      side *= -1;
+    });
+  }
 
-// ============================================
-// SCROLL ANIMATIONS
-// ============================================
-const animatedElements = document.querySelectorAll('.fade-in-up');
+  function updateVine() {
+    if (!stemLength) return;
+    const progress = Math.min(window.scrollY / maxScrollDistance(), 1);
+    stem.style.strokeDashoffset = stemLength * (1 - progress);
+    leafData.forEach(({ el, fraction }) => {
+      el.classList.toggle("grown", progress >= fraction - 0.02);
+    });
+  }
 
-if (animatedElements.length) {
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate');
-                observer.unobserve(entry.target);
-            }
+  let vineTicking = false;
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (!vineTicking) {
+        vineTicking = true;
+        requestAnimationFrame(() => {
+          updateVine();
+          vineTicking = false;
         });
-    }, { root: null, threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+      }
+    },
+    { passive: true }
+  );
 
-    animatedElements.forEach(el => observer.observe(el));
+  let resizeTimer;
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      buildVine();
+      updateVine();
+    }, 150);
+  });
+
+  buildVine();
+  updateVine();
 }
 
 // ============================================
-// SMOOTH SCROLL FOR ANCHOR LINKS
+// SCROLL-LINKED BLOB PARALLAX
 // ============================================
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
+const parallaxBlobs = [
+  { el: document.querySelector(".blob-1"), factor: -0.06 },
+  { el: document.querySelector(".blob-2"), factor: 0.08 },
+  { el: document.querySelector(".blob-3"), factor: -0.1 },
+].filter((blob) => blob.el);
 
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-            e.preventDefault();
-            const headerOffset = 80;
-            const elementPosition = targetElement.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-            window.scrollTo({
-                top: offsetPosition,
-                behavior: 'smooth'
-            });
-        }
+if (parallaxBlobs.length && !prefersReducedMotion) {
+  // The `translate` property composes with the blobs' float animation
+  const updateBlobs = () => {
+    parallaxBlobs.forEach(({ el, factor }) => {
+      el.style.translate = `0 ${window.scrollY * factor}px`;
     });
-});
+  };
+
+  let blobTicking = false;
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (!blobTicking) {
+        blobTicking = true;
+        requestAnimationFrame(() => {
+          updateBlobs();
+          blobTicking = false;
+        });
+      }
+    },
+    { passive: true }
+  );
+  updateBlobs();
+}
 
 // ============================================
-// SKILL ITEMS HOVER EFFECT
+// CONTACT FORM
 // ============================================
-const skillItems = document.querySelectorAll('.skill-item');
+const contactForm = document.querySelector(".contact-form-organic");
 
-skillItems.forEach(item => {
-    item.addEventListener('mouseenter', () => {
-        item.style.transform = 'translateY(-4px) scale(1.02)';
-    });
+if (contactForm) {
+  const statusEl = contactForm.querySelector(".form-status");
 
-    item.addEventListener('mouseleave', () => {
-        item.style.transform = '';
-    });
-});
+  contactForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const data = new FormData(contactForm);
+    const name = data.get("name") || "";
+    const email = data.get("email") || "";
+    const message = data.get("message") || "";
+
+    // Until a Formspree form ID is configured, fall back to the visitor's mail app
+    if (contactForm.action.includes("YOUR_FORM_ID")) {
+      const subject = encodeURIComponent(`Portfolio message from ${name}`);
+      const body = encodeURIComponent(`${message}\n\n— ${name} (${email})`);
+      window.location.href = `mailto:khainguyen2004@gmail.com?subject=${subject}&body=${body}`;
+      return;
+    }
+
+    const submitButton = contactForm.querySelector('button[type="submit"]');
+    submitButton.disabled = true;
+    statusEl.textContent = "Sending…";
+    statusEl.className = "form-status";
+
+    try {
+      const response = await fetch(contactForm.action, {
+        method: "POST",
+        body: data,
+        headers: { Accept: "application/json" },
+      });
+      if (!response.ok) throw new Error(`Request failed: ${response.status}`);
+      contactForm.reset();
+      statusEl.textContent =
+        "Message sent — thank you! I'll get back to you soon.";
+      statusEl.classList.add("success");
+    } catch (error) {
+      statusEl.textContent =
+        "Something went wrong. Please email me directly at khainguyen2004@gmail.com.";
+      statusEl.classList.add("error");
+    } finally {
+      submitButton.disabled = false;
+    }
+  });
+}
 
 // ============================================
 // CONSOLE EASTER EGG
 // ============================================
-console.log('%c Hey there, curious developer! 👋', 'color: #00ff88; font-size: 16px; font-weight: bold;');
-console.log('%c Thanks for checking out my portfolio.', 'color: #00d4ff; font-size: 14px;');
-console.log('%c Feel free to reach out: khainguyen2004@gmail.com', 'color: #ff006e; font-size: 12px;');
+console.log(
+  "%c🌿 Hey there, curious developer!",
+  "color: #2d4a3e; font-size: 16px; font-weight: bold;"
+);
+console.log(
+  "%cThanks for wandering through my garden.",
+  "color: #8b9a7d; font-size: 14px;"
+);
+console.log(
+  "%cFeel free to reach out: khainguyen2004@gmail.com",
+  "color: #c4785a; font-size: 12px;"
+);
