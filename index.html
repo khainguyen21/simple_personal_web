@@ -15,6 +15,9 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
     <link rel="stylesheet" href="css/style.css" />
+    <script>
+      document.documentElement.classList.add("js");
+    </script>
   </head>
   <body>
     <div class="organic-bg">
@@ -24,6 +27,14 @@
     </div>
     <div class="grain"></div>
 
+    <div class="vine" aria-hidden="true">
+      <svg class="vine-svg" xmlns="http://www.w3.org/2000/svg">
+        <path class="vine-stem-track" d="" />
+        <path class="vine-stem" d="" />
+        <g class="vine-leaves"></g>
+      </svg>
+    </div>
+
     <nav>
       <a href="#" class="logo">K</a>
       <ul class="nav-links">
@@ -31,7 +42,7 @@
         <li><a href="#projects">Projects</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#skills">Skills</a></li>
-        <li><a href="mailto:khainguyen2004@gmail.com">Contact</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
 
@@ -66,12 +77,12 @@
     </section>
 
     <section id="projects">
-      <div class="section-header">
+      <div class="section-header reveal">
         <span class="section-tag">Selected Work</span>
         <h2 class="section-title">Featured <em>Projects</em></h2>
       </div>
       <div class="projects-organic">
-        <article class="project-card-organic">
+        <article class="project-card-organic reveal">
           <div class="project-number">01</div>
           <span class="project-type-organic">Full-Stack Application</span>
           <h3 class="project-title-organic">EVC Tutor Schedule</h3>
@@ -93,7 +104,7 @@
             Explore <i class="fas fa-arrow-right"></i>
           </a>
         </article>
-        <article class="project-card-organic">
+        <article class="project-card-organic reveal">
           <div class="project-number">02</div>
           <span class="project-type-organic">Hackathon Project</span>
           <h3 class="project-title-organic">Learnr AI Tutor</h3>
@@ -114,7 +125,7 @@
             Explore <i class="fas fa-arrow-right"></i>
           </a>
         </article>
-        <article class="project-card-organic">
+        <article class="project-card-organic reveal">
           <div class="project-number">03</div>
           <span class="project-type-organic">Machine Learning</span>
           <h3 class="project-title-organic">Job Classification ML</h3>
@@ -139,12 +150,12 @@
     </section>
 
     <section id="experience">
-      <div class="section-header">
+      <div class="section-header reveal">
         <span class="section-tag">Journey</span>
         <h2 class="section-title">Work <em>Experience</em></h2>
       </div>
       <div class="experience-organic">
-        <div class="exp-item-organic">
+        <div class="exp-item-organic reveal">
           <div class="exp-date-organic">Sep — Dec 2025</div>
           <div class="exp-content-organic">
             <h3>Java Programming Tutor</h3>
@@ -164,7 +175,7 @@
             </ul>
           </div>
         </div>
-        <div class="exp-item-organic">
+        <div class="exp-item-organic reveal">
           <div class="exp-date-organic">Jan — May 2025</div>
           <div class="exp-content-organic">
             <h3>Data Science Embedded Tutor</h3>
@@ -184,7 +195,7 @@
             </ul>
           </div>
         </div>
-        <div class="exp-item-organic">
+        <div class="exp-item-organic reveal">
           <div class="exp-date-organic">Jan — May 2024</div>
           <div class="exp-content-organic">
             <h3>CS Club Project Manager</h3>
@@ -204,12 +215,12 @@
     </section>
 
     <section id="skills">
-      <div class="section-header">
+      <div class="section-header reveal">
         <span class="section-tag">Toolkit</span>
         <h2 class="section-title">Technical <em>Skills</em></h2>
       </div>
-      <h3 class="skills-category-organic">Programming Languages</h3>
-      <div class="skills-organic">
+      <h3 class="skills-category-organic reveal">Programming Languages</h3>
+      <div class="skills-organic reveal">
         <div class="skill-pill">
           <i class="fab fa-java"></i><span>Java</span>
         </div>
@@ -230,8 +241,8 @@
         </div>
       </div>
 
-      <h3 class="skills-category-organic">Libraries &amp; Frameworks</h3>
-      <div class="skills-organic">
+      <h3 class="skills-category-organic reveal">Libraries &amp; Frameworks</h3>
+      <div class="skills-organic reveal">
         <div class="skill-pill">
           <i class="fab fa-react"></i><span>React</span>
         </div>
@@ -249,8 +260,8 @@
         </div>
       </div>
 
-      <h3 class="skills-category-organic">Developer Tools</h3>
-      <div class="skills-organic">
+      <h3 class="skills-category-organic reveal">Developer Tools</h3>
+      <div class="skills-organic reveal">
         <div class="skill-pill">
           <i class="fab fa-git-alt"></i><span>Git</span>
         </div>
@@ -276,12 +287,12 @@
     </section>
 
     <section id="education">
-      <div class="section-header">
+      <div class="section-header reveal">
         <span class="section-tag">Growth</span>
         <h2 class="section-title"><em>Education</em></h2>
       </div>
       <div class="education-organic">
-        <div class="edu-card-organic">
+        <div class="edu-card-organic reveal">
           <span class="edu-status-organic">Current</span>
           <h3 class="edu-school-organic">Evergreen Valley College</h3>
           <p class="edu-degree-organic">
@@ -289,13 +300,101 @@
           </p>
           <div class="edu-gpa-organic">GPA: 3.84</div>
         </div>
-        <div class="edu-card-organic">
+        <div class="edu-card-organic reveal">
           <span class="edu-status-organic planned">Planned</span>
           <h3 class="edu-school-organic">University of California</h3>
           <p class="edu-degree-organic">
             Bachelor's Degree in Computer Science
           </p>
         </div>
+      </div>
+    </section>
+
+    <section id="github">
+      <div class="section-header reveal">
+        <span class="section-tag">Digital Garden</span>
+        <h2 class="section-title">A Year of <em>Commits</em></h2>
+      </div>
+      <div class="github-organic reveal">
+        <a
+          href="https://github.com/khainguyen21"
+          target="_blank"
+          rel="noopener"
+          class="github-chart-link"
+          aria-label="Khai Nguyen on GitHub"
+        >
+          <img
+            src="https://ghchart.rshah.org/2d4a3e/khainguyen21"
+            alt="GitHub contribution graph for khainguyen21"
+            loading="lazy"
+          />
+        </a>
+        <p class="github-caption">
+          Every green square is a seed planted — follow the growth on
+          <a href="https://github.com/khainguyen21" target="_blank" rel="noopener"
+            >GitHub</a
+          >.
+        </p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="section-header reveal">
+        <span class="section-tag">Get in Touch</span>
+        <h2 class="section-title">Let's <em>Connect</em></h2>
+      </div>
+      <div class="contact-organic">
+        <div class="contact-intro reveal">
+          <p>
+            I'm currently looking for my first software engineering internship
+            and always happy to talk about projects, tutoring, or anything
+            Java, React, or machine learning. Plant a message here and it will
+            find its way to my inbox.
+          </p>
+          <a href="mailto:khainguyen2004@gmail.com" class="contact-email-organic">
+            <i class="fas fa-envelope"></i> khainguyen2004@gmail.com
+          </a>
+        </div>
+        <form
+          class="contact-form-organic reveal"
+          action="https://formspree.io/f/YOUR_FORM_ID"
+          method="POST"
+        >
+          <div class="form-row">
+            <label>
+              Name
+              <input
+                type="text"
+                name="name"
+                required
+                autocomplete="name"
+                placeholder="Your name"
+              />
+            </label>
+            <label>
+              Email
+              <input
+                type="email"
+                name="email"
+                required
+                autocomplete="email"
+                placeholder="you@example.com"
+              />
+            </label>
+          </div>
+          <label>
+            Message
+            <textarea
+              name="message"
+              required
+              placeholder="What's growing on your mind?"
+            ></textarea>
+          </label>
+          <button type="submit" class="btn-organic btn-organic--primary">
+            Send Message
+          </button>
+          <p class="form-status" role="status" aria-live="polite"></p>
+        </form>
       </div>
     </section>
 
@@ -323,5 +422,7 @@
         © 2026 Hong Khai Nguyen. All rights reserved.
       </div>
     </footer>
+
+    <script src="js/main.js" defer></script>
   </body>
 </html>
