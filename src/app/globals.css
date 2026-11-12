@@ -1,0 +1,601 @@
+/* ------------------------------------------------------------------
+   Theme: warm paper + forest green.
+   One green, taken from the trees in Khai's portrait, carries the
+   portrait, headings, bullets and underlines. Dark mode is the same
+   idea at night.
+   ------------------------------------------------------------------ */
+:root {
+  --bg: #f3f1ea;
+  --surface: #fbfaf6;
+  --ink: #1d2619;
+  --muted: #6b6f63;
+  --faint: #a7a99f;
+  --line: #d9d6cb;
+  --accent: #1f6a3a;
+  --accent-soft: rgb(31 106 58 / 35%);
+  --frame: #e8e5db;
+  --shadow: 0 1px 2px rgb(29 38 25 / 6%), 0 12px 32px -8px rgb(29 38 25 / 18%);
+  color-scheme: light;
+}
+
+/* Dark: follows the system unless the visitor picked light with the toggle… */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #121610;
+    --surface: #1a1f17;
+    --ink: #e7e5dc;
+    --muted: #9a9e92;
+    --faint: #5d6258;
+    --line: #2c3228;
+    --accent: #8fd3a1;
+    --accent-soft: rgb(143 211 161 / 35%);
+    --frame: #1d2319;
+    --shadow: 0 1px 2px rgb(0 0 0 / 30%), 0 16px 40px -8px rgb(0 0 0 / 55%);
+    color-scheme: dark;
+  }
+}
+/* …or whenever they picked dark. Keep these two blocks identical. */
+:root[data-theme="dark"] {
+  --bg: #121610;
+  --surface: #1a1f17;
+  --ink: #e7e5dc;
+  --muted: #9a9e92;
+  --faint: #5d6258;
+  --line: #2c3228;
+  --accent: #8fd3a1;
+  --accent-soft: rgb(143 211 161 / 35%);
+  --frame: #1d2319;
+  --shadow: 0 1px 2px rgb(0 0 0 / 30%), 0 16px 40px -8px rgb(0 0 0 / 55%);
+  color-scheme: dark;
+}
+
+/* Theme toggle: moon in light mode, sun in dark mode */
+.theme-toggle {
+  position: fixed;
+  top: 14px;
+  right: 14px;
+  z-index: 15;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition:
+    color 0.2s,
+    border-color 0.2s,
+    background-color 0.2s;
+}
+.theme-toggle:hover {
+  color: var(--ink);
+  border-color: var(--line);
+  background: var(--surface);
+}
+.theme-toggle svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.icon-sun {
+  display: none;
+}
+:root[data-theme="dark"] .icon-sun {
+  display: block;
+}
+:root[data-theme="dark"] .icon-moon {
+  display: none;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .icon-sun {
+    display: block;
+  }
+  :root:not([data-theme="light"]) .icon-moon {
+    display: none;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+p,
+ul,
+ol,
+figure {
+  margin: 0;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.skip {
+  position: absolute;
+  left: 16px;
+  top: -40px;
+  padding: 6px 10px;
+  background: var(--ink);
+  color: var(--bg);
+  border-radius: 6px;
+  font-size: 13px;
+  z-index: 10;
+}
+.skip:focus {
+  top: 12px;
+}
+
+/* Underline that tightens to the text on hover */
+.inline-link {
+  position: relative;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.inline-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 1px;
+  background: var(--accent-soft);
+  transition: background-color 0.2s;
+}
+.inline-link:hover::after,
+.inline-link:focus-visible::after {
+  background: var(--accent);
+}
+.inline-link:hover {
+  color: var(--accent);
+}
+
+/* ------------------------------ Home ------------------------------ */
+.home {
+  min-height: 100svh;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 40px;
+  padding: 56px 20px 32px;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+@media (min-width: 900px) {
+  .home {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: 1fr auto;
+    column-gap: 72px;
+    align-items: center;
+    padding: 64px 40px 32px;
+  }
+}
+
+.intro {
+  max-width: 420px;
+}
+
+.intro h1 {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(42px, 6vw, 54px);
+  font-weight: 400;
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+}
+
+.subline {
+  margin-top: 14px;
+  font-size: 15px;
+}
+
+.bio {
+  margin-top: 20px;
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+.intro section {
+  margin-top: 30px;
+}
+
+.intro h2 {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.list {
+  font-size: 13.5px;
+  line-height: 1.8;
+}
+.list li {
+  position: relative;
+  padding-left: 18px;
+}
+.list li::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 0.82em;
+  width: 3px;
+  height: 3px;
+  background: var(--accent);
+}
+
+.footer {
+  grid-column: 1 / -1;
+  font-size: 12.5px;
+  color: var(--muted);
+}
+.footer ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 22px;
+}
+.footer a:hover {
+  color: var(--ink);
+}
+
+/* --------------------------- Portrait ----------------------------- */
+.portrait {
+  display: grid;
+  justify-items: center;
+  gap: 16px;
+}
+
+.portrait-stage {
+  position: relative;
+  width: min(100%, 420px);
+  aspect-ratio: 1;
+}
+@media (max-width: 899px) {
+  .portrait-stage {
+    width: min(72vw, 300px);
+  }
+}
+
+.portrait-stage canvas {
+  display: block;
+}
+
+/* The year's twelve months, revealed as the portrait dissolves */
+.sheet {
+  position: absolute;
+  inset: 8%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 8px;
+  pointer-events: none;
+}
+.is-open .sheet {
+  pointer-events: auto;
+}
+.sheet-cell {
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
+  background: var(--frame);
+  opacity: 0;
+  transform: scale(0.86);
+  transition:
+    opacity 0.28s ease,
+    transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition-delay: calc((11 - var(--i)) * 12ms);
+}
+.is-open .sheet-cell {
+  opacity: 1;
+  transform: none;
+  transition-delay: calc(140ms + var(--i) * 28ms);
+}
+.sheet-cell img {
+  object-fit: cover;
+}
+.sheet-empty {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 11px;
+  color: var(--faint);
+}
+
+.pill {
+  font-size: 12px;
+  color: var(--muted);
+  padding: 5px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  transition:
+    color 0.2s,
+    border-color 0.2s;
+}
+.pill:hover {
+  color: var(--accent);
+  border-color: var(--accent-soft);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sheet-cell,
+  .is-open .sheet-cell {
+    transform: none;
+    transition: opacity 0.2s;
+    transition-delay: 0s;
+  }
+}
+
+/* ------------------------- Link previews -------------------------- */
+.preview {
+  position: relative;
+}
+.preview-card {
+  display: none;
+}
+
+@media (hover: hover) and (min-width: 1100px) {
+  .preview-card {
+    display: block;
+    position: absolute;
+    z-index: 5;
+    left: calc(100% + 24px);
+    top: 50%;
+    width: 268px;
+    overflow: hidden;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-6px, -50%);
+    transition:
+      opacity 0.18s ease,
+      transform 0.24s cubic-bezier(0.2, 0.8, 0.2, 1),
+      visibility 0s 0.24s;
+    pointer-events: none;
+  }
+  .preview:hover .preview-card,
+  .preview:focus-within .preview-card {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(0, -50%);
+    transition-delay: 0.08s, 0.08s, 0s;
+  }
+}
+
+.preview-shot {
+  position: relative;
+  display: block;
+  aspect-ratio: 2 / 1;
+  border-bottom: 1px solid var(--line);
+  background: var(--frame);
+}
+.preview-shot img {
+  object-fit: cover;
+  object-position: top;
+}
+.preview-body {
+  display: grid;
+  gap: 2px;
+  padding: 12px 14px 14px;
+  white-space: normal;
+  line-height: 1.45;
+}
+.preview-host {
+  font-size: 11px;
+  color: var(--faint);
+}
+.preview-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink);
+}
+.preview-desc {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* ------------------------- Photo journal -------------------------- */
+.journal {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 40px 20px 96px;
+}
+@media (min-width: 900px) {
+  .journal {
+    padding: 48px 40px 120px;
+  }
+}
+
+.back {
+  font-size: 12.5px;
+  color: var(--muted);
+}
+.back:hover {
+  color: var(--ink);
+}
+
+.journal-head {
+  margin: 28px 0 48px;
+  max-width: 460px;
+}
+.journal-head h1 {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(38px, 6vw, 48px);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+.journal-head p {
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+.year + .year {
+  margin-top: 56px;
+}
+.year-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 10px;
+  margin-bottom: 18px;
+}
+.year-head h2 {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--accent);
+}
+.year-head span {
+  font-size: 12px;
+}
+
+.months {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px 12px;
+}
+@media (min-width: 560px) {
+  .months {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (min-width: 900px) {
+  .months {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 26px 14px;
+  }
+}
+
+.month {
+  display: grid;
+  gap: 8px;
+}
+.month-frame {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--frame);
+  cursor: zoom-in;
+}
+.month-frame img {
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.month-frame:hover img {
+  transform: scale(1.03);
+}
+.month-frame.is-empty {
+  cursor: default;
+  background: transparent;
+  border: 1px dashed var(--line);
+}
+.month-label {
+  font-size: 12px;
+  line-height: 1.3;
+}
+
+/* Lightbox */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  backdrop-filter: blur(6px);
+  animation: fade 0.2s ease;
+  cursor: zoom-out;
+}
+.lightbox figure {
+  display: grid;
+  gap: 12px;
+  width: min(100%, 1000px);
+  cursor: default;
+}
+.lightbox-img {
+  position: relative;
+  height: min(78svh, 900px);
+}
+.lightbox-img img {
+  object-fit: contain;
+}
+.lightbox figcaption {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--muted);
+}
+.lightbox button {
+  font: inherit;
+  color: var(--ink);
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
