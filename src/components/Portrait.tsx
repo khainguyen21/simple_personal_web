@@ -48,12 +48,8 @@ export function Portrait({ src, sheet }: { src: string; sheet: JournalYear | nul
     let tiles: Tile[] = [];
     let size = 0;
     let ink = "#1d2619";
-    const scheme = window.matchMedia("(prefers-color-scheme: dark)");
-    // The toggle's choice (<html data-theme>) wins; otherwise follow the system.
-    const isDark = () => {
-      const chosen = document.documentElement.dataset.theme;
-      return chosen ? chosen === "dark" : scheme.matches;
-    };
+    // Light is the default; dark only when chosen with the toggle (<html data-theme>).
+    const isDark = () => document.documentElement.dataset.theme === "dark";
     let dark = isDark();
     let frame = 0;
     let last = 0;
@@ -226,7 +222,6 @@ export function Portrait({ src, sheet }: { src: string; sheet: JournalYear | nul
     wrap.addEventListener("pointerenter", onEnter);
     wrap.addEventListener("pointermove", onMove);
     wrap.addEventListener("pointerleave", onLeave);
-    scheme.addEventListener("change", onScheme);
     const themeWatch = new MutationObserver(onScheme);
     themeWatch.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
     motionQuery.addEventListener("change", onMotion);
@@ -236,7 +231,6 @@ export function Portrait({ src, sheet }: { src: string; sheet: JournalYear | nul
       wrap.removeEventListener("pointerenter", onEnter);
       wrap.removeEventListener("pointermove", onMove);
       wrap.removeEventListener("pointerleave", onLeave);
-      scheme.removeEventListener("change", onScheme);
       themeWatch.disconnect();
       motionQuery.removeEventListener("change", onMotion);
     };
