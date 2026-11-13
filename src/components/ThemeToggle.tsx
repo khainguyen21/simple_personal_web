@@ -1,17 +1,14 @@
 "use client";
 
 /**
- * Flips between light and dark and remembers the choice. Until someone clicks it,
- * the site follows the visitor's system setting. Which icon shows is decided in
+ * Flips between light and dark and remembers the choice. Light is the default
+ * for every new visitor. Which icon shows is decided in
  * CSS from the <html data-theme> attribute, so there is nothing to hydrate.
  */
 export function ThemeToggle() {
   const toggle = () => {
     const root = document.documentElement;
-    const current =
-      root.dataset.theme ??
-      (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-    const next = current === "dark" ? "light" : "dark";
+    const next = root.dataset.theme === "dark" ? "light" : "dark";
     root.dataset.theme = next;
     try {
       localStorage.setItem("theme", next);

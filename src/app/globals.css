@@ -18,23 +18,7 @@
   color-scheme: light;
 }
 
-/* Dark: follows the system unless the visitor picked light with the toggle… */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #121610;
-    --surface: #1a1f17;
-    --ink: #e7e5dc;
-    --muted: #9a9e92;
-    --faint: #5d6258;
-    --line: #2c3228;
-    --accent: #8fd3a1;
-    --accent-soft: rgb(143 211 161 / 35%);
-    --frame: #1d2319;
-    --shadow: 0 1px 2px rgb(0 0 0 / 30%), 0 16px 40px -8px rgb(0 0 0 / 55%);
-    color-scheme: dark;
-  }
-}
-/* …or whenever they picked dark. Keep these two blocks identical. */
+/* Dark: only when the visitor picks it with the toggle. Light is the default. */
 :root[data-theme="dark"] {
   --bg: #121610;
   --surface: #1a1f17;
@@ -92,14 +76,6 @@
 }
 :root[data-theme="dark"] .icon-moon {
   display: none;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .icon-sun {
-    display: block;
-  }
-  :root:not([data-theme="light"]) .icon-moon {
-    display: none;
-  }
 }
 
 *,
